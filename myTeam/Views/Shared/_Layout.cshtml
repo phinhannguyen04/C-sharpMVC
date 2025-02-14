@@ -1,0 +1,25 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="icon" type="image/png" href="~/img/favicon.png" />
+
+	<!-- UIkit CSS -->
+	<link rel="stylesheet" href="~/css/uikit.css" />
+	<title>Cento</title>
+</head>
+<body>
+	<!-- Start Header -->
+	@await Component.InvokeAsync("Header")
+	<!-- End Header -->
+	<!-- Start Hero -->
+	@RenderBody()
+	<!-- End About us -->
+	<!-- Start Footer -->
+	@await Component.InvokeAsync("Footer")
+	<!-- UIkit JS -->
+	<script src="~/js/uikit.min.js"></script>
+	<script src="~/js/uikit-icons.min.js"></script>
+</body>
+</html>

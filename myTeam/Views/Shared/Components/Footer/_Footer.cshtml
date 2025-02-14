@@ -1,0 +1,112 @@
+﻿@model myTeam.Models.Contact
+
+<footer>
+	<section>
+		<div class="uk-section uk-section-large uk-section-secondary">
+			<div class="uk-container">
+				<div class="uk-grid-medium uk-child-width-1-2@s uk-margin-large-bottom uk-flex uk-flex-middle" uk-grid>
+					<div>
+						<h2 class="uk-text-bold uk-heading-small">Join the early access</h2>
+						<p class="uk-text-large">Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis amet natus vel optio ut, est?</p>
+					</div>
+					<div class="uk-text-right@s">
+						<button class="uk-button uk-button-primary uk-button-large uk-border-rounded uk-width-medium@s uk-text-bold">Get early access</button>
+					</div>
+				</div>
+				<hr>
+
+				<div class="uk-grid-medium uk-child-width-1-3@s" uk-grid>
+					<div>
+						<a class="uk-logo uk-padding-remove-left uk-text-bold" href="#">Cento</a>
+					</div>
+					<div class="uk-text-center@s">
+						<a href="" class="uk-icon-button uk-margin-small-right" uk-icon="twitter"></a>
+						<a href="" class="uk-icon-button uk-margin-small-right" uk-icon="facebook"></a>
+						<a href="" class="uk-icon-button" uk-icon="youtube"></a>
+					</div>
+					<div class="uk-text-right@s">
+						<a class="uk-link-text uk-h3" href="mailto:hi@cento.com">hi@cento.com</a>
+					</div>
+				</div>
+
+				<div class="uk-margin-large-top">
+					<h2 class="uk-text-bold uk-heading-small">Contact Us</h2>
+					<form 
+						asp-controller="Home"
+						asp-action="Contact"
+						method="post"
+						class="uk-form-stacked">
+						@*Anti-Forgery Token*@
+						@Html.AntiForgeryToken()
+						
+						<div class="uk-margin">
+							<label 
+								class="uk-form-label" 
+								for="form-name"
+								asp-for="Name"
+							>Name</label>
+							<div class="uk-form-controls">
+								<input 
+									asp-for="Name"
+									class="uk-input uk-border-rounded" 
+									id="form-name" 
+									type="text" 
+									placeholder="Your Name">
+							</div>
+							<span
+								asp-validation-for="Name"
+								  class="uk-text-danger"></span>
+						</div>
+
+						<div class="uk-margin">
+							<label 
+								asp-for="Email"
+								class="uk-form-label" 
+								for="form-email">
+								Email</label>
+							<div class="uk-form-controls">
+								<input 
+									asp-for="Email"
+									class="uk-input uk-border-rounded" 
+									id="form-email" 
+									type="email" 
+									placeholder="Your Email">
+							</div>
+							<span asp-validation-for="Email"
+								  class="uk-text-danger"></span>
+						</div>
+
+						<div class="uk-margin">
+							<label
+								asp-for="Message"
+								class="uk-form-label" 
+								for="form-message">Message</label>
+							<div class="uk-form-controls">
+								<textarea 
+									asp-for="Message"
+									class="uk-textarea uk-border-rounded" 
+									id="form-message" 
+									rows="5" 
+									placeholder="Your Message">
+								</textarea>
+								<span
+									asp-validation-for="Message"
+									class="uk-text-danger"></span>
+							</div>
+						</div>
+
+						<div class="uk-margin">
+							<button 
+								type="submit"
+								class="uk-button uk-button-primary uk-border-rounded">Submit</button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</section>
+</footer>
+
+
+@{
+}
