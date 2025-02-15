@@ -22,8 +22,9 @@ namespace myTeam.Controllers
         // GET: Admin
         public async Task<IActionResult> Index()
         {
-            var model = await _context.Contacts.ToListAsync();
-            return View(model);
+            //var model = await _context.Contacts.ToListAsync();
+            //return View(model);
+            return View();
         }
 
 
