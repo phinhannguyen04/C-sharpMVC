@@ -2,53 +2,64 @@
 
 @{
     ViewData["Title"] = "Details";
+    Layout = "_AdminLayout";
 }
 
-<h1>Details</h1>
+@if (Model != null) // Kiểm tra Model khác null trước khi truy cập các thuộc tính
+{
 
-<div>
-    <h4>Contact</h4>
-    <hr />
-    <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Name)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Name)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Email)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Email)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Title)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Title)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Message)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Message)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.DateTime)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.DateTime)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.IsRead)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.IsRead)
-        </dd>
-    </dl>
+<div class="uk-container uk-padding-large">
+    <div class="uk-grid-medium uk-child-width-1-2@s uk-grid-match uk-grid">
+
+        <div>
+            <div class="uk-card uk-card-default uk-card-body uk-border-rounded uk-box-shadow-medium">
+                <h2 class="uk-card-title uk-margin-remove-bottom text-2xl font-semibold">@Model.Title</h2>
+                <p class="uk-text-meta">From: @Model.Name</p>
+                <p class="uk-text-meta">Email: <a href="mailto:@Model.Email" class="uk-link-text">@Model.Email</a></p>
+                <p class="uk-margin-top">Message: @Model.Message</p>
+                <p class="uk-text-small uk-text-muted">Received: @Model.DateTime.ToString("dd/MM/yyyy HH:mm")</p>
+
+                @if (!Model.IsRead)
+                {
+                    <span class="uk-badge uk-badge-warning uk-margin-top">Unread</span>
+                }
+                else
+                {
+                    <span class="uk-badge uk-badge-success uk-margin-top">Read</span>
+                }
+            </div>
+        </div>
+
+        <div>
+            <div class="uk-card uk-card-default uk-card-body uk-border-rounded uk-box-shadow-medium">
+                <h2 class="uk-card-title text-2xl font-semibold">Reply</h2>
+                <form>
+                    <input type="hidden" name="ContactId" value="@Model.Id" />
+
+                    <div class="uk-margin">
+                        <label class="uk-form-label" for="subject">Subject</label>
+                        <div class="uk-form-controls">
+                            <input class="uk-input" id="subject" name="Subject" type="text" placeholder="Subject" required>
+                        </div>
+                    </div>
+
+                    <div class="uk-margin">
+                        <label class="uk-form-label" for="message">Message</label>
+                        <div class="uk-form-controls">
+                            <textarea class="uk-textarea" id="message" name="Message" rows="4" placeholder="Your Reply" required></textarea>
+                        </div>
+                    </div>
+
+                    <button class="uk-button uk-button-primary">Send Reply</button>
+                </form>
+            </div>
+        </div>
+
+    </div>
 </div>
-<div>
-    <a asp-action="Edit" asp-route-id="@Model?.Id">Edit</a> |
-    <a asp-action="Index">Back to List</a>
-</div>
+}
+else
+{
+    <p>Không tìm thấy thông tin liên hệ.</p>
+    // Hoặc hiển thị thông báo lỗi khác
+}
