@@ -20,5 +20,6 @@ namespace myTeam.Models
         [MinLength(10, ErrorMessage = "The message must be at least 10 characters long")]
         public string Message { get; set; }    
         public DateTime DateTime { get; set; } = DateTime.UtcNow;
+        public bool IsRead { get; set; } = false;
     }
 }

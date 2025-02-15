@@ -1,0 +1,67 @@
+﻿@model myTeam.Models.Contact
+
+<div id="contact" class="uk-margin-large-top">
+    <h2 class="uk-text-bold uk-heading-small">Contact Us</h2>
+    <form asp-controller="Home"
+          asp-action="Contact"
+          method="post"
+          class="uk-form-stacked">
+        @*Anti-Forgery Token*@
+        @Html.AntiForgeryToken()
+
+        <div class="uk-margin">
+            <label class="uk-form-label"
+                   for="form-name"
+                   asp-for="Name">Name</label>
+            <div class="uk-form-controls">
+                <input asp-for="Name"
+                       class="uk-input uk-border-rounded"
+                       id="form-name"
+                       type="text"
+                       placeholder="Your Name">
+            </div>
+            <span asp-validation-for="Name"
+                  class="uk-text-danger"></span>
+        </div>
+
+        <div class="uk-margin">
+            <label asp-for="Email"
+                   class="uk-form-label"
+                   for="form-email">
+                Email
+            </label>
+            <div class="uk-form-controls">
+                <input asp-for="Email"
+                       class="uk-input uk-border-rounded"
+                       id="form-email"
+                       type="email"
+                       placeholder="Your Email">
+            </div>
+            <span asp-validation-for="Email"
+                  class="uk-text-danger"></span>
+        </div>
+
+        <div class="uk-margin">
+            <label asp-for="Message"
+                   class="uk-form-label"
+                   for="form-message">Message</label>
+            <div class="uk-form-controls">
+                <textarea asp-for="Message"
+                          class="uk-textarea uk-border-rounded"
+                          id="form-message"
+                          rows="5"
+                          placeholder="Your Message">
+                </textarea>
+                <span asp-validation-for="Message"
+                      class="uk-text-danger"></span>
+            </div>
+        </div>
+
+        <div class="uk-margin">
+            <button type="submit"
+                    class="uk-button uk-button-primary uk-border-rounded">
+                Submit
+            </button>
+        </div>
+    </form>
+</div>

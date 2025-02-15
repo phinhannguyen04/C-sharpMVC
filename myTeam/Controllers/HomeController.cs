@@ -17,7 +17,7 @@ namespace myTeam.Controllers
 
         public IActionResult Index()
         {
-            return View();
+            return View(new Contact());
         }
 
         [HttpPost]
@@ -30,8 +30,9 @@ namespace myTeam.Controllers
                 model.Title = $"Mail contact from #ID {model.Id}";
                 model.DateTime = DateTime.Now;
 
-                _context.Contacts.AddAsync(model);
-                _context.SaveChanges();
+                await _context.Contacts.AddAsync(model);
+
+                await _context.SaveChangesAsync();
 
                 return RedirectToAction("Index", "Home");
             } 
