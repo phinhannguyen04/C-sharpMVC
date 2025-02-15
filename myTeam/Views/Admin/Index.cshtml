@@ -1,43 +1,38 @@
 ﻿@* @model IEnumerable<myTeam.Models.Contact> *@
 
-@{
 
-    ViewData["Title"] = "Index";
-}
+ @{ 
+    ViewData["Title"] = "Admin Dashboard"; 
+ } 
 
-@* <h1>Index</h1> *@
+<div class="px-3 border-b">
+    <form action="" class="flex">
+        <input class="p-3 flex-1" type="text" placeholder="search">
+        <button type="submit" class="p-3">
+            <i class="fad fa-search"></i>
+        </button>
+    </form>
+</div>
 
-@* <p> *@
-@*     <a asp-action="Create">Create New</a> *@
-@* </p> *@
-@* <table class="table"> *@
-@*     <thead> *@
-@*         <tr> *@
-@*             <th>@Html.DisplayNameFor(model => model.Name)</th> *@
-@*             <th>@Html.DisplayNameFor(model => model.Email)</th> *@
-@*             <th>@Html.DisplayNameFor(model => model.Title)</th> *@
-@*             <th>@Html.DisplayNameFor(model => model.Message)</th> *@
-@*             <th>@Html.DisplayNameFor(model => model.DateTime)</th> *@
-@*             <th>@Html.DisplayNameFor(model => model.IsRead)</th> *@
-@*             <th></th> *@
-@*         </tr> *@
-@*     </thead> *@
-@*     <tbody> *@
-@*         @foreach (var item in Model) *@
-@*         { *@
-@*             <tr> *@
-@*                 <td>@Html.DisplayFor(modelItem => item.Name)</td> *@
-@*                 <td>@Html.DisplayFor(modelItem => item.Email)</td> *@
-@*                 <td>@Html.DisplayFor(modelItem => item.Title)</td> *@
-@*                 <td>@Html.DisplayFor(modelItem => item.Message)</td> *@
-@*                 <td>@Html.DisplayFor(modelItem => item.DateTime)</td> *@
-@*                 <td>@Html.DisplayFor(modelItem => item.IsRead)</td> *@
-@*                 <td> *@
-@*                     <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> | *@
-@*                     <a asp-action="Details" asp-route-id="@item.Id">Details</a> | *@
-@*                     <a asp-action="Delete" asp-route-id="@item.Id">Delete</a> *@
-@*                 </td> *@
-@*             </tr> *@
-@*         } *@
-@*     </tbody> *@
-@* </table> *@
+<div class="flex-1 flex flex-col">
+    @foreach (var item in Model)
+    {
+        <!-- message -->
+        <a asp-controller="Admin" asp-action="Details" asp-route-id="@item.Id" class="detail-button">
+            <div class="flex items-center shadow-xs transition-all duration-300 ease-in-out p-5 hover:shadow-md">
+                <div class="w-10 h-10 overflow-hidden rounded-md">
+                    <img class="img-responsive" src="img/user1.jpg" alt="">
+                </div>
+                <h1 class="ml-3">@item.Name</h1>
+                <p class="ml-6 flex-1 text-xs">@item.Title</p>
+                <p class="font-bold text-gray-900">@item.DateTime</p>
+            </div>
+        </a>
+        <!-- message -->
+    }
+</div>
+
+<div class="card-footer flex justify-between">
+    <p>4.41 GB (25%) of 17 GB used Manage</p>
+    <p>Last account activity: 36 minutes ago</p>
+</div>
